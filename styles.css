@@ -1,0 +1,424 @@
+/* --- Global Stylesheet: styles.css --- */
+
+/* 1. Root Variables for Easy Color Changes */
+:root {
+    --primary-color: #008080; /* Teal */
+    --secondary-color: #FF8C00; /* Dark Orange/Gold */
+    --gradient-start: #00CED1; /* Dark Cyan */
+    --gradient-end: #FFA500; /* Orange */
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --background-light: #ffffff;
+    --card-bg: #f9f9f9;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+/* Base Reset and Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    padding-top: 60px; /* Space for fixed header */
+}
+
+/* 5. Entrance Animation Keyframes */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Header and Navigation (Required: Fixed Header) */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--background-light);
+    box-shadow: 0 2px 4px var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    height: 60px;
+    z-index: 100; /* Keep it on top */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav a {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent; 
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+nav a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+/* 3. Main Content Layout (Applied Entrance Animation) */
+main {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Apply animation here */
+    animation: fadeInSlideUp 0.8s ease-out both; 
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+}
+
+/* 4. Shared Button Styling (Required: Visible Reaction on Hover) */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-light);
+    background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Lift up */
+    box-shadow: 0 8px 15px var(--shadow-light); 
+}
+
+/* --- About Page Styles --- */
+.profile-story {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 60px; /* Required: Clear, spacious boundary from skills grid */
+}
+
+.profile-image-container {
+    position: relative; 
+    flex-shrink: 0;
+    width: 35%; /* Makes text column wider than image column */
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Decorative Mark (Required: Fixed in position relative to image corner) */
+.decorative-mark {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px var(--background-light);
+}
+
+.story-text {
+    flex-grow: 1;
+}
+
+/* Skills Grid (Required: Perfectly uniform grid, equal gaps) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 across */
+    gap: 20px; 
+    text-align: center;
+}
+
+.skill-tile {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transition added */
+}
+
+/* NEW: Skill Tile Hover Animation */
+.skill-tile:hover {
+    transform: scale(1.05); /* Slight growth */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); 
+    cursor: pointer;
+}
+
+
+/* --- Projects Page Styles --- */
+.projects-grid {
+    display: grid;
+    /* UPDATED: Ensures four cards fit nicely on larger screens (or wraps correctly) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Project Card (Required: Distinct box/card) */
+.project-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Project Card Hover Effect (Required: Visually lift up/deeper shadow) */
+.project-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* Neatly stacked and separated by vertical empty space (Required) */
+.project-card p {
+    margin-bottom: 20px; 
+    color: #666;
+    font-size: 0.95rem;
+}
+
+
+/* --- Achievements Page Styles --- */
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Required: Large, equal empty spaces separating each card */
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+/* Optional: Achievement Card Hover for polish */
+.achievement-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Required: Continuous vertical band of color */
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background-color: var(--primary-color);
+    border-radius: 10px 0 0 10px;
+}
+
+.achievement-content {
+    padding-left: 20px;
+}
+
+.achievement-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+/* --- Contact Page Styles --- */
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto 50px auto; /* Required: Centered horizontally, clear separation below */
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.form-group {
+    margin-bottom: 15px; /* Required: Small, consistent vertical gaps */
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+/* Social Media Block (Required: Visually distinct and separated) */
+.social-links {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #eee; /* Visual separator */
+}
+
+/* NEW: Wrapper for the clickable link around the social card (only for LinkedIn/GitHub) */
+.social-link-card-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the text color */
+    display: inline-block; /* Allows layout next to each other */
+}
+
+/* Social Link Card Base Styles (Applied to all three cards) */
+.social-link-card {
+    /* Set display property here to ensure all three cards align horizontally */
+    display: inline-block; 
+    width: 200px;
+    padding: 20px;
+    /* Margin defined here handles spacing for all three */
+    margin: 10px; 
+    background-color: var(--background-light);
+    border: 1px solid var(--gradient-start);
+    border-radius: 8px;
+    transition: all 0.3s;
+    /* Added cursor pointer for visual feedback on all cards */
+    cursor: pointer; 
+}
+
+/* NEW: Apply hover effect directly to the card (works for both <a> wrapped and simple <div> cards) */
+.social-link-card:hover {
+    box-shadow: 0 5px 10px var(--shadow-light);
+    border-color: var(--gradient-end);
+    transform: translateY(-2px); /* Subtle lift on social links too */
+}
+
+
+/* NEW: Success Message Alert Styling */
+.message-sent-alert {
+    display: none; /* Hidden by default, shown by JavaScript */
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    background: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 128, 128, 0.3); 
+    animation: fadeInSlideDown 0.5s ease-out; 
+}
+
+@keyframes fadeInSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- Media Queries for Mobile Responsiveness (Max Width 768px) --- */
+@media (max-width: 768px) {
+    
+    /* Global */
+    body {
+        padding-top: 0; 
+    }
+    
+    /* Header/Nav */
+    header {
+        position: static; 
+        flex-direction: column; 
+        height: auto;
+        box-shadow: 0 2px 4px var(--shadow-light);
+    }
+    
+    nav {
+        flex-wrap: wrap; 
+        margin-top: 5px;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Home Page */
+    .hero div[style*="display: flex"] {
+        flex-direction: column; 
+        text-align: center !important;
+    }
+    
+    /* About Page */
+    .profile-story {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    
+    .profile-image-container {
+        width: 60%; 
+        margin: 0 auto;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+        gap: 15px;
+    }
+
+    /* Projects Page */
+    .projects-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    /* Contact Page */
+    /* Ensure the social link wrapper and the card itself are full width on mobile */
+    .social-link-card-link {
+        width: 100%; 
+        margin: 10px 0;
+    }
+    
+    .social-link-card {
+        width: 100%; 
+        display: block; /* Force stacking on mobile */
+    }
+    
+    /* General content padding */
+    main {
+        padding: 20px 3%;
+    }
+}

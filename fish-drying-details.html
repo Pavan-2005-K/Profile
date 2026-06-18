@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan - Smart Fish Drying System Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific styles for the details page */
+        .project-details {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        /* Make images slightly larger on hover to indicate clickability */
+        .image-gallery img {
+            width: 100%; /* Default to full width on small screens */
+            max-width: 400px; /* Limit image size on large screens */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Indicates it's clickable */
+            transition: transform 0.2s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.02);
+        }
+        .back-link {
+            display: block;
+            margin: 30px 0 10px 0;
+            text-align: center;
+        }
+
+        /* --- MODAL/LIGHTBOX STYLES --- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 200; /* Sit on top of everything */
+            padding-top: 50px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content {  
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% width on small screens */
+        @media only screen and (max-width: 700px){
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Pavan</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <a href="projects.html" class="back-link btn" style="width: auto; padding: 10px 20px;">← Back to Projects</a>
+
+        <section class="project-details">
+            <h2>Smart Solar-Assisted Fish Drying System 🐟☀️</h2>
+            <p style="font-size: 1.1rem; color: var(--primary-color);">SocioSpark 2K25 Social Innovation Hackathon Entry</p>
+            
+            <h3 style="margin-top: 20px;">Motivation and Problem</h3>
+            <p>Our team (Creative Crew) built this device during the SocioSpark 2K25, a 24-hour Social Innovation Hackathon. The project was motivated by the slow, unhygienic, and contamination-prone practice of drying fish on coir mats, which limits market value.</p>
+
+            <h3 style="margin-top: 20px;">Our Solution</h3>
+            <p>We developed a hygienic solar-assisted fish dryer that revolutionizes traditional methods by drying fish faster and in a hygienic manner.</p>
+            
+            <h3 style="margin-top: 20px;">Technology & Components</h3>
+            <ul>
+                <li>Hygienic Drying: Uses stainless steel trays.</li>
+                <li>Monitoring & Control: Utilizes ESP32-controlled fans and DHT22 sensors for real-time monitoring and optimized drying.</li>
+                <li>Reliability: Powered by solar energy with a battery backup for off-grid operation.</li>
+            </ul>
+            <p style="margin-top: 20px;">This innovation ensures food safety, helps meet export standards, and ultimately increases the value of the fish product.</p>
+
+
+            <h3 style="margin-top: 30px;">Image Gallery</h3>
+            <div class="image-gallery">
+                <img src="images/WhatsApp Image 2025-10-19 at 11.51.47_4c773da5.jpg" alt="Physical setup of the solar-assisted fish dryer with internal wiring." onclick="openModal(this)" />
+                
+                <img src="images/WhatsApp Image 2025-10-19 at 11.21.20_762dcdd9.jpg" alt="Internal view of the dryer showing trays and electronic components." onclick="openModal(this)" />
+            </div>
+
+        </section>
+        <a href="projects.html" class="back-link btn" style="width: auto; padding: 10px 20px;">← Back to Projects</a>
+    </main>
+    
+    <div id="myModal" class="modal">
+      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+      <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        function openModal(element) {
+          const modal = document.getElementById("myModal");
+          const modalImg = document.getElementById("img01");
+          
+          modal.style.display = "block";
+          modalImg.src = element.src;
+        }
+
+        // Close the modal if the user clicks anywhere outside of the image
+        const modal = document.getElementById("myModal");
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+</body>
+</html>
